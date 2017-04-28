@@ -15,10 +15,12 @@ int yylex()
     re2c:define:YYCTYPE = int;
     re2c:yyfill:enable = 0;
 
+    * { fprintf(stderr, "lex error: %s\n", start); }
     [0-9]+ { strncpy(num, start, YYCURSOR - start); num[YYCURSOR - start] = '\0'; yylval = atoi(num); return NUM; }
     '+' { yylval = '+'; return PLUS; }
     '-' { yylval = '-'; return MINUS; }
     '*' { yylval = '*'; return MUL; }
     '/' { yylval = '/'; return DIV; }
+    '\n' { yylval = '\n'; return LF; }
      */
 }

@@ -6,3 +6,5 @@ calc.tab.h: calc.y
 	bison -d calc.y
 calc.tab.c: calc.y
 	bison -d calc.y
+clean:
+	rm calc.tab.h calc.tab.c calc.lex.c main

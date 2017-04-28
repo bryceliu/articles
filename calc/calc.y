@@ -5,9 +5,12 @@
 %}
 
 %define api.value.type {int}
+%define parse.lac full
+%define parse.error verbose
 %token NUM
 %left PLUS MINUS
 %left MUL DIV
+%token LF
 
 %%
 
@@ -16,8 +19,8 @@ input:
     | input line
 
 line:
-      '\n'
-    | expr '\n' { fprintf(stderr, "%d\n", $1); }
+      LF
+    | expr LF { fprintf(stdout, "result: %d\n", $1); }
     ;
 
 expr:
@@ -29,8 +32,7 @@ expr:
     ;
 
 %%
-
 void yyerror(char const *error)
 {
-    fprintf(stderr, "Error: %s\n", error);
+    fprintf(stderr, "parse error: %s\n", error);
 }

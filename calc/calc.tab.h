@@ -49,7 +49,8 @@ extern int yydebug;
     PLUS = 259,
     MINUS = 260,
     MUL = 261,
-    DIV = 262
+    DIV = 262,
+    LF = 263
   };
 #endif
 
